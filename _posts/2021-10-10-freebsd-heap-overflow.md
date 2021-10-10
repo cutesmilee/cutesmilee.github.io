@@ -49,6 +49,6 @@ The patch for the bug is straightforward, they just added a size check to ensure
 
 ```c
 if (ssid_len == 0 || ssid_len > sizeof(ssid))
- 		return EINVAL;
+ 	return EINVAL;
 ```
 
