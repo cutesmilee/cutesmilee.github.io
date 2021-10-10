@@ -42,3 +42,13 @@ struct {
 **What about the exploitability of the bug?**
 
 The size of the overflow is quite big, but from static analysis seems like that the data which are gonna be written after the buffer aren't controlled, but taken somewhere from the stack (with some debugging it should be quite easy to figure out what is gonna be copied), even if random data are copied it could still be possible to exploit this issue, for example by overwriting a reference counter until it reaches 0 (since most of the times you can check if this condition is reached).
+
+**How the bug was patched?**
+
+The patch for the bug is straightforward, they just added a size check to ensure that the user cannot provide a size bigger than the `ssid` buffer:
+
+```c
+if (ssid_len == 0 || ssid_len > sizeof(ssid))
+ 		return EINVAL;
+```
+
