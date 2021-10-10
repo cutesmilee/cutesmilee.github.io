@@ -4,7 +4,7 @@ title: "IEEE80211_IOC_MLME kernel heap overflow"
 date: 2021-10-10 13:37:41 +0100
 categories: kernel FreeBSD
 ---
-**What is SETMLME?**
+**What is IEEE80211_IOC_MLME?**
 
 `ieee80211_ioctl_setmlme()` / `IEEE80211_IOC_MLME` is a FreeBSD ioctl reachable by root, and it's used to control the MLME state machine, anyway this isn't required to understand the bug.
 
