@@ -21,7 +21,7 @@
 title: cutesmilee's blog
 email: cutesmilee.research@protonmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  a blog about a teenager who tries to hack kernels
+  a teenager who tries to hack kernels
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: cutesmilee__
