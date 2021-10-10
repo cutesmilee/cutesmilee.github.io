@@ -13,7 +13,7 @@ categories: kernel FreeBSD
 Looking at `ieee80211_ioctl_setmlme()` we can see 2 things:
 
 - mlme struct is initalized with user controlled data (`ireq->i_data`)
-- different functions are called if the op(mode) field is set to some specific value
+- different functions are called if the `op` / `opmode` field is set to some specific value
 
 If we set iv_opmode field to `IEEE80211_M_IBSS` / `IEEE80211_M_AHDEMO` and im_op field to `IEEE80211_MLME_ASSOC`, `setmlme_assoc_adhoc()` is called with 3 untrusted user inputs, the interesting one is `im_ssid_len`, which is a `uint8_t` given by the user, and it's passed as `ssid_len`.
 
@@ -42,4 +42,3 @@ struct {
 **What about the exploitability of the bug?**
 
 The size of the overflow is quite big, but from static analysis seems like that the data which are gonna be written after the buffer aren't controlled, but taken somewhere from the stack (with some debugging it should be quite easy to figure out what is gonna be copied), even if random data are copied it could still be possible to exploit this issue, for example by overwriting a reference counter until it reaches 0 (since most of the times you can check if this condition is reached).
-
