@@ -1,2 +1,2 @@
 # cutesmilee.github.io
-just another blog about it security
+yet another blog about security research
